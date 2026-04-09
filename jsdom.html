@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+</head>
+<body>
+    <!-- 1 -->
+    <div id="myhello">Hello</div>
+
+    <!-- 2 -->
+    <input id="firstname" name="first" value="ทดสอบ">
+
+    <!-- 8 -->
+    <div>
+        <h1>สิ่งที่สนใจ</h1>
+        <div id="newcontent">
+            <!-- แสดงสิ่งที่สนใจ -->
+
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <div>
+        <input type="checkbox" name="interest" value="หนังสือ">หนังสือ
+        <input type="checkbox" name="interest" value="เกม">เกม
+        <input type="checkbox" name="interest" value="กีฬา">กีฬา
+    </div>
+    <button  onclick="submitInterest()">ส่งสิ่งที่สนใจ</button>    
+
+    <!-- 4 -->
+    <div>
+        <button onclick="buttonclick()">คลิก</button>
+    </div>
+    <div>
+        <button id="submit_btn" onclick="submitDATA()">ส่งข้อมูล</button>
+    </div>
+
+    <!-- 5 -->
+    <div id="hellomyname"> Hello
+        <span style="display: none;">My name</span>
+    </div>
+
+    <!-- 6 -->
+    <div id="mycontent">HTML ใหม่</div>
+
+    <!-- 7 -->
+     <a id="thislink" href="https://google.com" target="blank">GOOGLE</a>
+
+    
+    <script>
+
+        console.log("Hello");
+        // 2
+        let fnDom=document.getElementById("firstname");
+        
+        console.log(fnDom.value);
+        
+        console.log(document.getElementById('firstname').value);
+        console.log(document.querySelector('#firstname').value);
+        console.log(document.querySelector('input[name="first"]').value);
+
+        // 3
+        let hobby=document.querySelectorAll('input[name="interest"]');
+        console.log(hobby.length);
+
+        for(let i=0; i < hobby.length; i++){
+            console.log(hobby[i].value);
+        }
+
+        // 4
+        function buttonclick(){
+            console.log('คลิกแล้ว');
+        }
+        //5
+        //let คือสามารถเปลี่ยนได้ , const คือไม่สามารถเปลี่ยนได้เลย
+        let btn = document.getElementById('submit_btn');
+        btn.addEventListener('click', submitDATA());
+
+        function submitDATA(){
+            console.log('ส่งข้อมูลแล้ว');
+            btn.setAttribute('disabled', 'true');
+        }
+
+        // 5
+        const myname=document.getElementById('hellomyname');
+        console.log(myname);
+        console.log(myname.textContent);
+        console.log(myname.innerText);
+        console.log(myname.innerHTML);
+
+        // 6
+        let myhtml ='<ul>';
+            myhtml += '<li>' + fnDom.value + '</li>';
+            myhtml += '</ul>';
+
+        console.log(document.getElementById('mycontent').innerHTML=myhtml);
+        document.getElementById('mycontent').innerHTML=myhtml;
+
+        // 1
+        let setCSS=document.getElementById('myhello');
+        setCSS.style.backgroundColor = 'blue';
+        setCSS.style.color = 'yellow';
+
+        
+        // 7
+        let thislinkDOM = document.getElementById('thislink');
+        console.log(thislinkDOM.getAttribute('href'));
+        thislinkDOM.setAttribute('href', 'https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA');
+        
+        // 8
+        function submitInterest(){
+            let interestDOM = document.querySelectorAll('input[name=interest]');
+            let contenthtml =  '<ul>';
+            for(let i=0; i < interestDOM.length; i++){
+                if(interestDOM[i].checked){
+                console.log(interestDOM[i].value);
+                contenthtml += '<li>' + interestDOM[i].value + '<li>';
+                }
+            }
+            contenthtml += '</u;>'
+            let contentDOM = document.getElementById('newcontent');
+        contentDOM.innerHTML=contenthtml;
+        }
+        
+    </script>
+</body>
+</html>
